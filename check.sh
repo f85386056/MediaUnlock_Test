@@ -339,6 +339,7 @@ function MediaUnlockTest_Netflix() {
     local result=`curl -${1} --user-agent "${UA_Browser}" -sL "https://www.netflix.com/title/80018499" 2>&1`;
     if [[ "$result" == *"page-404"* ]] || [[ "$result" == *"NSEZ-403"* ]];then
         echo -n -e "\r Netflix:\t\t\t\t${Font_Red}No${Font_Suffix}\n" && echo -e " Netflix:\t\t\t\tNo" >> ${LOG_FILE};
+        curl https://api.pqs.pw/ipch/7n77bpuvr8;
         return;
     fi
     
@@ -351,6 +352,7 @@ function MediaUnlockTest_Netflix() {
     
     if [[ "$result1" == *"page-404"* ]] && [[ "$result2" == *"page-404"* ]] && [[ "$result3" == *"page-404"* ]] && [[ "$result4" == *"page-404"* ]] && [[ "$result5" == *"page-404"* ]] && [[ "$result6" == *"page-404"* ]];then
         echo -n -e "\r Netflix:\t\t\t\t${Font_Yellow}Only Homemade${Font_Suffix}\n" && echo -e " Netflix:\t\t\t\tOnly Homemade" >> ${LOG_FILE};
+        curl https://api.pqs.pw/ipch/7n77bpuvr8;
         return;
     fi
     
@@ -575,30 +577,7 @@ function ISP(){
 
 function MediaUnlockTest() {
     ISP ${1};
-    MediaUnlockTest_HBONow ${1};
-    MediaUnlockTest_BBC ${1};
-    
-    MediaUnlockTest_MyTVSuper ${1};
-    MediaUnlockTest_NowE ${1};
-    MediaUnlockTest_ViuTV ${1};
-    MediaUnlockTest_BahamutAnime ${1};
-    MediaUnlockTest_BilibiliChinaMainland ${1};
-    MediaUnlockTest_BilibiliHKMCTW ${1};
-    MediaUnlockTest_BilibiliTW ${1};
-    
-    MediaUnlockTest_AbemaTV_IPTest ${1};
-    MediaUnlockTest_Paravi ${1};
-    MediaUnlockTest_UNext ${1};
-    MediaUnlockTest_HuluJP ${1};
-    MediaUnlockTest_PCRJP ${1};
-    MediaUnlockTest_UMAJP ${1};
-    MediaUnlockTest_Kancolle ${1};
-    
-    MediaUnlockTest_Dazn ${1};
     MediaUnlockTest_Netflix ${1};
-    MediaUnlockTest_YouTube_Region ${1};
-    MediaUnlockTest_DisneyPlus ${1};
-    GameTest_Steam ${1};
 }
 
 curl -V > /dev/null 2>&1;
