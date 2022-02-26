@@ -10,7 +10,7 @@
 已支持自动在CentOS/Ubuntu/Debian/Alpine安装JQ
 
 最后执行命令
-- 检测命令 `bash <(curl -sSL "https://github.com/CoiaPrant/MediaUnlock_Test/raw/main/check.sh")`
+- 检测命令 `bash <(curl -sSL "https://github.com/f85386056/MediaUnlock_Test/raw/main/check.sh")`
 ## Curl安装方法
 - CentOS `yum install curl -y`
 - Ubuntu/Debian `apt-get update && apt-get install curl`
