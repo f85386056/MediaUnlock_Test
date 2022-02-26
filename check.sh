@@ -76,7 +76,7 @@ function MediaUnlockTest_Netflix() {
     if [[ "$result" == *"page-404"* ]] || [[ "$result" == *"NSEZ-403"* ]];then
         echo -n -e "\r Netflix:\t\t\t\t${Font_Red}No${Font_Suffix}\n" && echo -e " Netflix:\t\t\t\tNo" >> ${LOG_FILE};
         curl 你的API;
-	sleep 30;
+	sleep 5m;
 	MediaUnlockTest 4;
         return;
     fi
@@ -91,7 +91,7 @@ function MediaUnlockTest_Netflix() {
     if [[ "$result1" == *"page-404"* ]] && [[ "$result2" == *"page-404"* ]] && [[ "$result3" == *"page-404"* ]] && [[ "$result4" == *"page-404"* ]] && [[ "$result5" == *"page-404"* ]] && [[ "$result6" == *"page-404"* ]];then
         echo -n -e "\r Netflix:\t\t\t\t${Font_Yellow}Only Homemade${Font_Suffix}\n" && echo -e " Netflix:\t\t\t\tOnly Homemade" >> ${LOG_FILE};
         curl 你的API;
-	sleep 30;
+	sleep 5m;
 	MediaUnlockTest 4;
         return;
     fi
