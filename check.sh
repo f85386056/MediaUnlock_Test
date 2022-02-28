@@ -14,15 +14,11 @@ Font_SkyBlue="\033[36m";
 Font_White="\033[37m";
 Font_Suffix="\033[0m";
 LOG_FILE="check.log";
+You_API="你的API";#此处替换自己的API使用
+Changtime="更换API生效时间";#部分商家有API更换频率限制，以及生效时间，需要自己计算更换API之后的等待时间（例如1s,1m）
 
 clear;
-echo -e "流媒体解锁测试 MediaUnlock_Test" && echo -e "流媒体解锁测试 MediaUnlock_Test" > ${LOG_FILE};
-echo -e "${Font_Purple}项目地址 https://github.com/CoiaPrant/MediaUnlock_Test ${Font_Suffix}" && echo -e "项目地址 https://github.com/CoiaPrant/MediaUnlock_Test" >> ${LOG_FILE};
-echo -e "${Font_Purple}BUG反馈 https://github.com/CoiaPrant/MediaUnlock_Test/issues${Font_Suffix}" && echo -e "BUG反馈 https://github.com/CoiaPrant/MediaUnlock_Test/issues" >> ${LOG_FILE};
-echo -e "${Font_Purple}联系作者 https://t.me/CoiaPrant${Font_Suffix}" && echo -e "联系作者 https://t.me/CoiaPrant" >> ${LOG_FILE};
-echo -e "${Font_Purple}个人频道 https://t.me/CoiaPrant_Blog${Font_Suffix}" && echo -e "个人频道 https://t.me/CoiaPrant_Blog" >> ${LOG_FILE};
-echo -e "${Font_Purple}声明 本测试工具根据GPL V3协议开源，严禁倒卖${Font_Suffix}" && echo -e "声明 本测试工具根据GPL V3协议开源，严禁倒卖" >> ${LOG_FILE};
-echo -e "${Font_Purple}提示 本工具测试结果仅供参考，请以实际使用为准${Font_Suffix}" && echo -e "提示 本工具测试结果仅供参考，请以实际使用为准" >> ${LOG_FILE};
+echo -e "${Font_Purple}声明 本工具根据GPL V3协议开源，严禁倒卖${Font_Suffix}" && echo -e "声明 本工具根据GPL V3协议开源，严禁倒卖" >> ${LOG_FILE};
 echo -e "${Font_Purple}国家代码 http://www.loglogo.com/front/countryCode/${Font_Suffix}" && echo -e "国家代码 http://www.loglogo.com/front/countryCode/" >> ${LOG_FILE};
 echo -e " ** 当前版本: v${shell_version}" && echo -e " ** 当前版本: v${shell_version}" >> ${LOG_FILE};
 echo -e " ** 系统时间: $(date)" && echo -e " ** 系统时间: $(date)" >> ${LOG_FILE};
@@ -75,9 +71,9 @@ function MediaUnlockTest_Netflix() {
     local result=`curl -${1} --user-agent "${UA_Browser}" -sL "https://www.netflix.com/title/80018499" 2>&1`;
     if [[ "$result" == *"page-404"* ]] || [[ "$result" == *"NSEZ-403"* ]];then
         echo -n -e "\r Netflix:\t\t\t\t${Font_Red}No${Font_Suffix}\n" && echo -e " Netflix:\t\t\t\tNo" >> ${LOG_FILE};
-        curl 你的API;
-	sleep 5m;
-	MediaUnlockTest 4;
+        curl ${You_API};
+	    sleep ${Changtime};#更换之后再次检测的等待时间
+	    MediaUnlockTest 4;
         return;
     fi
     
@@ -90,9 +86,9 @@ function MediaUnlockTest_Netflix() {
     
     if [[ "$result1" == *"page-404"* ]] && [[ "$result2" == *"page-404"* ]] && [[ "$result3" == *"page-404"* ]] && [[ "$result4" == *"page-404"* ]] && [[ "$result5" == *"page-404"* ]] && [[ "$result6" == *"page-404"* ]];then
         echo -n -e "\r Netflix:\t\t\t\t${Font_Yellow}Only Homemade${Font_Suffix}\n" && echo -e " Netflix:\t\t\t\tOnly Homemade" >> ${LOG_FILE};
-        curl 你的API;
-	sleep 5m;
-	MediaUnlockTest 4;
+        curl ${You_API};
+	    sleep ${Changtime};#更换之后再次检测的等待时间
+	    MediaUnlockTest 4;
         return;
     fi
     
